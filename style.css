@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    background-color: #282c35; /* Darker background color */
+    font-family: 'Exo 2', sans-serif;
+    letter-spacing: 2px;
+}
+
+.container {
+    padding: 12px;
+}
+
+.top-section {
+    margin: 48px 0px 36px 0px;
+}
+
+input {
+    color: black;
+    font-size: 18px;
+    padding: 8px; /* Increased padding for better UI */
+    margin-top: 8px;
+    border-radius: 4px;
+    border: none;
+    outline: none; /* Remove default input outline */
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.list-item {
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 1px solid rgb(59, 58, 58);
+    opacity: 0; /* Initial opacity for fade-in effect */
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes dance {
+    0%, 100% { transform: translate(0, 0); }
+    25%, 75% { transform: translate(5px, -5px); }
+    50% { transform: translate(0, 0); }
+}
+
+.Emoji {
+    width: 5%;
+    font-size: 48px;
+    text-align: center;
+    animation: dance 3s infinite ease-in-out; /* Apply the dance animation with ease-in-out timing function */
+}
+
+
+.aliases {
+    width: 40%;
+    text-align: end;
+    color: bisque;
+}
+
+.description {
+    width: 55%;
+    text-align: end;
+    display: block;
+}
+
+.fade-in {
+    opacity: 1; /* Faded-in opacity */
+}
+
+@media only screen and (max-width: 750px) {
+    input {
+        font-size: 16px;
+    }
+
+    .list-item {
+        font-size: 14px;
+    }
+
+    .Emoji {
+        width: auto;
+        font-size: 32px;
+    }
+
+    .description {
+        width: auto;
+        display: none;
+    }
+
+    .aliases {
+        width: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+}
