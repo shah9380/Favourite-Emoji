@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 }
 
 body {
-    background-color: #282c35; /* Darker background color */
+    background-color: black;
     font-family: 'Exo 2', sans-serif;
     letter-spacing: 2px;
 }
@@ -18,16 +19,19 @@ body {
 
 .top-section {
     margin: 48px 0px 36px 0px;
+    position: sticky;
+    top: 0;
+    background-color: black;
+    z-index: 1000;
 }
 
 input {
     color: black;
     font-size: 18px;
-    padding: 8px; /* Increased padding for better UI */
+    padding: 4px;
     margin-top: 8px;
     border-radius: 4px;
     border: none;
-    outline: none; /* Remove default input outline */
 }
 
 h1 {
@@ -42,23 +46,17 @@ h1 {
     flex-wrap: wrap;
     align-items: center;
     border-bottom: 1px solid rgb(59, 58, 58);
-    opacity: 0; /* Initial opacity for fade-in effect */
-    transition: opacity 0.5s ease-in-out;
-}
-
-@keyframes dance {
-    0%, 100% { transform: translate(0, 0); }
-    25%, 75% { transform: translate(5px, -5px); }
-    50% { transform: translate(0, 0); }
+    opacity: 0;
+    animation: fade-in 0.5s ease-in-out forwards;
 }
 
 .Emoji {
     width: 5%;
     font-size: 48px;
     text-align: center;
-    animation: dance 3s infinite ease-in-out; /* Apply the dance animation with ease-in-out timing function */
+    opacity: 1;
+    animation: size-change 1s ease-in-out forwards, fade-in 0.5s ease-in-out forwards;
 }
-
 
 .aliases {
     width: 40%;
@@ -72,8 +70,45 @@ h1 {
     display: block;
 }
 
-.fade-in {
-    opacity: 1; /* Faded-in opacity */
+.pop-out {
+    animation: pop-out 0.5s ease-in-out forwards;
+}
+
+.not-found {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+    margin-top: 20px;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pop-out {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes size-change {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media only screen and (max-width: 750px) {
@@ -100,15 +135,7 @@ h1 {
         display: flex;
         flex-wrap: wrap;
     }
-    .copy-prompt {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 999;
-    }
-    
+}
+h4 i{
+    color: aqua;
 }
