@@ -100,5 +100,15 @@ h1 {
         display: flex;
         flex-wrap: wrap;
     }
+    .copy-prompt {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 999;
+    }
     
 }
