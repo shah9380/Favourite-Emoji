@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (Math.random() < 0.1) {
             emoji.classList.add('pop-out');
         }
+
+        // Add click event to copy emoji to clipboard
+        emoji.addEventListener('click', () => {
+            copyToClipboard(element.emoji);
+            showCopyPrompt();
+        });
     }
 
     function emojiswehave(emojiLister) {
@@ -32,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     emojiswehave(emojiList);
-
     searching.addEventListener('input', (event) => {
         const searchTerm = event.target.value.toLowerCase();
         listcontainer.innerHTML = "";
@@ -54,4 +59,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    function copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
+
+    function showCopyPrompt() {
+        const copyPrompt = document.createElement('div');
+        copyPrompt.classList.add('copy-prompt');
+        copyPrompt.innerText = 'Emoji copied!';
+        document.body.appendChild(copyPrompt);
+
+        // Center the prompt
+        copyPrompt.style.position = 'fixed';
+        copyPrompt.style.top = '50%';
+        copyPrompt.style.left = '50%';
+        copyPrompt.style.transform = 'translate(-50%, -50%)';
+
+        setTimeout(() => {
+            document.body.removeChild(copyPrompt);
+        }, 2000);
+    }
 });
