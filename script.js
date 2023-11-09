@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function showNotFoundMessage() {
+        const notFoundMessage = document.createElement('div');
+        notFoundMessage.innerText = 'No emojis found.';
+        notFoundMessage.classList.add('not-found');
+        listcontainer.appendChild(notFoundMessage);
+    }
+
     emojiswehave(emojiList);
     searching.addEventListener('input', (event) => {
         const searchTerm = event.target.value.toLowerCase();
@@ -54,9 +61,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 );
             });
 
-            filteredItems.forEach((eve) => {
-                LoadData(eve);
-            });
+            if (filteredItems.length === 0) {
+                showNotFoundMessage();
+            } else {
+                filteredItems.forEach((eve) => {
+                    LoadData(eve);
+                });
+            }
         }
     });
 
